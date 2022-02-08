@@ -124,7 +124,6 @@ namespace Dedicated_Unity_Game_Server
             packetHandlers = new Dictionary<int, PacketHandler>()
             {
                 {(int)ClientPackets.welcomeReceived, ServerHandle.WellcomeReceived},
-                {(int)ClientPackets.udpTestReceived, ServerHandle.UDPTestReceived}
             };
 
             Console.WriteLine("Initialized Packet.");
