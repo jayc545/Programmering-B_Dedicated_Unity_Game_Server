@@ -18,5 +18,12 @@ namespace Dedicated_Unity_Game_Server
             }
             // TODO: Send player into game.
         }
+
+        public static void UDPTestReceived(int _fromClint, Packet _packet)
+        {
+            string _msg = _packet.ReadString();
+
+            Console.WriteLine($"Received packet via UDP. Contains message: {_msg}");
+        }
     }
 }

@@ -158,6 +158,7 @@ namespace Dedicated_Unity_Game_Server
             public void Connect(IPEndPoint _endPoint)
             {
                 endPoint = _endPoint;
+                ServerSend.UDPTest(id);
             }
 
             public void SendData(Packet _packet)

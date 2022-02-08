@@ -86,8 +86,31 @@ namespace Dedicated_Unity_Game_Server
                         return;
                     }
 
-                    if (clients[_clientId].udp.endPoint.ToString)
+                    if (clients[_clientId].udp.endPoint.ToString() == _clientEndPoint.ToString())
+                    {
+                        clients[_clientId].udp.HandleData(_packet);
+                    }
                 }
+            }
+            catch(Exception _ex)
+            {
+                Console.WriteLine($"Error receiving UDP data: {_ex}");
+            }
+        }
+
+        public static void SendUDPData(IPEndPoint _clientEndPoint, Packet _packet)
+        {
+            try
+            {
+                if(_clientEndPoint != null)
+                {
+                    udpListener.BeginSend(_packet.ToArray(), _packet.Length(), _clientEndPoint, null, null);
+                }
+            }
+
+            catch (Exception _ex)
+            {
+                Console.WriteLine($"Error sending data to {_clientEndPoint} via UDP: {_ex}");
             }
         }
 
@@ -100,7 +123,8 @@ namespace Dedicated_Unity_Game_Server
 
             packetHandlers = new Dictionary<int, PacketHandler>()
             {
-                {(int)ClientPackets.welcomeReceived, ServerHandle.WellcomeReceived}
+                {(int)ClientPackets.welcomeReceived, ServerHandle.WellcomeReceived},
+                {(int)ClientPackets.udpTestReceived, ServerHandle.UDPTestReceived}
             };
 
             Console.WriteLine("Initialized Packet.");
