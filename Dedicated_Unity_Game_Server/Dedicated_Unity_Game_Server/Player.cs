@@ -24,6 +24,8 @@ namespace Dedicated_Unity_Game_Server
             username = _username;
             position = _spawnPosition;
             rotation = Quaternion.Identity;
+
+            inputs = new bool[4];
         }
 
         public void Update()
@@ -35,7 +37,7 @@ namespace Dedicated_Unity_Game_Server
             }
             if (inputs[1])
             {
-                _inputdirection.Y += 1;
+                _inputdirection.Y -= 1;
             }
             if (inputs[2])
             {
@@ -43,7 +45,7 @@ namespace Dedicated_Unity_Game_Server
             }
             if (inputs[3])
             {
-                _inputdirection.X += 1;
+                _inputdirection.X -= 1;
             }
 
             Move(_inputdirection);
@@ -58,7 +60,7 @@ namespace Dedicated_Unity_Game_Server
             position += _moveDirection * moveSpeed;
 
             ServerSend.PlayerPosition(this);
-            ServerSend.Rotation(this);
+            ServerSend.PlayerRotation(this);
         }
 
 

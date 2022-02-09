@@ -28,9 +28,9 @@ namespace Dedicated_Unity_Game_Server
             {
                 _inputs[i] = _packet.ReadBool();
             }
-            Quaternion _rotate = _packet.ReadQuaternion();
+            Quaternion _rotation = _packet.ReadQuaternion();
 
-            Server.clients{ _fromClient}.player.SetInput(_inputs, _rotate);
+            Server.clients[_fromClient].player.SetInput(_inputs, _rotation);
         }
     }
 }
