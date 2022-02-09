@@ -58,6 +58,7 @@ namespace Dedicated_Unity_Game_Server
             position += _moveDirection * moveSpeed;
 
             ServerSend.PlayerPosition(this);
+            ServerSend.Rotation(this);
         }
 
 
