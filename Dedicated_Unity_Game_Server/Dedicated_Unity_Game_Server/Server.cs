@@ -124,6 +124,8 @@ namespace Dedicated_Unity_Game_Server
             packetHandlers = new Dictionary<int, PacketHandler>()
             {
                 {(int)ClientPackets.welcomeReceived, ServerHandle.WellcomeReceived},
+                {(int)ClientPackets.playerMovement, ServerHandle.PlayerMovement},
+
             };
 
             Console.WriteLine("Initialized Packet.");

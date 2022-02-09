@@ -94,6 +94,11 @@ namespace Dedicated_Unity_Game_Server
                 SendTCPData(_toClient, _packet);
             }
         }
+
+        public static void PlayerPosition(Player _player)
+        {
+
+        }
         #endregion
     }
 }
